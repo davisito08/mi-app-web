@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="GravityLab — Crea y gestiona escenas de experimentos visuales con efectos de gravedad interactivos." />
   <title>GravityLab — Experimento Visual de Gravedad</title>
-  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/styles.css?v=2" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -52,8 +52,6 @@
       <nav class="nav-links" role="navigation" aria-label="Menú principal">
         <a href="#escenas" class="nav-link active" id="nav-escenas">🌌 Escenas</a>
         <a href="#nueva-escena" class="nav-link" id="nav-nueva">✦ Nueva Escena</a>
-        <a href="#" class="nav-link" id="nav-biblioteca">🖼️ Biblioteca</a>
-        <a href="#" class="nav-link" id="nav-stats">📊 Estadísticas</a>
       </nav>
 
       <div class="nav-actions">
@@ -91,11 +89,11 @@
         <a href="#escenas" class="btn-ghost btn-lg" id="hero-explore-btn">Ver escenas →</a>
       </div>
       <div class="hero-stats" aria-label="Estadísticas">
-        <div class="stat"><strong>128</strong><span>Escenas creadas</span></div>
+        <div class="stat"><strong id="hero-scenes-count">0</strong><span>Escenas creadas</span></div>
         <div class="stat-divider"></div>
-        <div class="stat"><strong>3.4k</strong><span>Elementos en juego</span></div>
+        <div class="stat"><strong id="hero-views-count">0</strong><span>Vistas totales</span></div>
         <div class="stat-divider"></div>
-        <div class="stat"><strong>99ms</strong><span>Latencia física</span></div>
+        <div class="stat"><strong id="hero-public-count">0</strong><span>Escenas públicas</span></div>
       </div>
     </div>
     <div class="hero-visual" aria-hidden="true">
@@ -115,7 +113,7 @@
     <div class="container">
       <div class="filters-left">
         <h2 class="section-title">Mis Escenas</h2>
-        <span class="badge-count" id="total-count">6 escenas</span>
+        <span class="badge-count" id="total-count">... escenas</span>
       </div>
       <div class="filters-right">
         <div class="search-wrap">
@@ -143,155 +141,8 @@
   <main class="main-content">
     <div class="container">
       <div class="scenes-grid" id="scenes-grid" role="list">
-
-        <!-- Tarjeta de escena 1 -->
-        <article class="scene-card" role="listitem" tabindex="0" id="escena-1">
-          <div class="scene-card-header" style="--card-color:#6d28d9">
-            <span class="scene-icon">🌌</span>
-            <div class="scene-badges">
-              <span class="badge badge-public">Pública</span>
-              <span class="badge badge-views">👁 312</span>
-            </div>
-          </div>
-          <div class="scene-card-body">
-            <h3 class="scene-title">Caída Libre en el Vacío</h3>
-            <p class="scene-desc">Bloques y emojis flotando en el espacio profundo con gravedad baja y rebote alto.</p>
-            <div class="scene-meta">
-              <span class="meta-item">⚛ 14 elementos</span>
-              <span class="meta-item">↕ g: 0.4</span>
-              <span class="meta-item">🏓 rebote: 0.9</span>
-            </div>
-          </div>
-          <div class="scene-card-footer">
-            <div class="scene-color-strip" style="background:#6d28d9"></div>
-            <div class="scene-actions">
-              <button class="btn-card btn-edit" id="btn-edit-1" title="Editar escena">✏️ Editar</button>
-              <button class="btn-card btn-launch" id="btn-launch-1" title="Lanzar simulación">🚀 Lanzar</button>
-              <button class="btn-card btn-delete" id="btn-delete-1" title="Eliminar" aria-label="Eliminar escena">🗑</button>
-            </div>
-          </div>
-        </article>
-
-        <!-- Tarjeta de escena 2 -->
-        <article class="scene-card" role="listitem" tabindex="0" id="escena-2">
-          <div class="scene-card-header" style="--card-color:#0891b2">
-            <span class="scene-icon">🌊</span>
-            <div class="scene-badges">
-              <span class="badge badge-public">Pública</span>
-              <span class="badge badge-views">👁 87</span>
-            </div>
-          </div>
-          <div class="scene-card-body">
-            <h3 class="scene-title">Maremoto de Partículas</h3>
-            <p class="scene-desc">Tarjetas e iconos SVG que fluyen con gravedad lateral simulando corrientes de agua.</p>
-            <div class="scene-meta">
-              <span class="meta-item">⚛ 22 elementos</span>
-              <span class="meta-item">↔ g_x: 0.6</span>
-              <span class="meta-item">🏓 rebote: 0.5</span>
-            </div>
-          </div>
-          <div class="scene-card-footer">
-            <div class="scene-color-strip" style="background:#0891b2"></div>
-            <div class="scene-actions">
-              <button class="btn-card btn-edit" id="btn-edit-2">✏️ Editar</button>
-              <button class="btn-card btn-launch" id="btn-launch-2">🚀 Lanzar</button>
-              <button class="btn-card btn-delete" id="btn-delete-2" aria-label="Eliminar escena">🗑</button>
-            </div>
-          </div>
-        </article>
-
-        <!-- Tarjeta de escena 3 -->
-        <article class="scene-card" role="listitem" tabindex="0" id="escena-3">
-          <div class="scene-card-header" style="--card-color:#059669">
-            <span class="scene-icon">🌿</span>
-            <div class="scene-badges">
-              <span class="badge badge-private">Privada</span>
-              <span class="badge badge-views">👁 5</span>
-            </div>
-          </div>
-          <div class="scene-card-body">
-            <h3 class="scene-title">Jardín en Órbita</h3>
-            <p class="scene-desc">Escena experimental con emojis de naturaleza orbitando un centro fijo con masa alta.</p>
-            <div class="scene-meta">
-              <span class="meta-item">⚛ 8 elementos</span>
-              <span class="meta-item">↕ g: 1.0</span>
-              <span class="meta-item">🏓 rebote: 0.3</span>
-            </div>
-          </div>
-          <div class="scene-card-footer">
-            <div class="scene-color-strip" style="background:#059669"></div>
-            <div class="scene-actions">
-              <button class="btn-card btn-edit" id="btn-edit-3">✏️ Editar</button>
-              <button class="btn-card btn-launch" id="btn-launch-3">🚀 Lanzar</button>
-              <button class="btn-card btn-delete" id="btn-delete-3" aria-label="Eliminar escena">🗑</button>
-            </div>
-          </div>
-        </article>
-
-        <!-- Tarjeta de escena 4 -->
-        <article class="scene-card" role="listitem" tabindex="0" id="escena-4">
-          <div class="scene-card-header" style="--card-color:#dc2626">
-            <span class="scene-icon">🔥</span>
-            <div class="scene-badges">
-              <span class="badge badge-public">Pública</span>
-              <span class="badge badge-views">👁 540</span>
-            </div>
-          </div>
-          <div class="scene-card-body">
-            <h3 class="scene-title">Caos Absoluto</h3>
-            <p class="scene-desc">Todos los tipos de elementos con parámetros físicos al máximo. Impredecible y adictivo.</p>
-            <div class="scene-meta">
-              <span class="meta-item">⚛ 50 elementos</span>
-              <span class="meta-item">↕ g: 2.0</span>
-              <span class="meta-item">🏓 rebote: 1.0</span>
-            </div>
-          </div>
-          <div class="scene-card-footer">
-            <div class="scene-color-strip" style="background:#dc2626"></div>
-            <div class="scene-actions">
-              <button class="btn-card btn-edit" id="btn-edit-4">✏️ Editar</button>
-              <button class="btn-card btn-launch" id="btn-launch-4">🚀 Lanzar</button>
-              <button class="btn-card btn-delete" id="btn-delete-4" aria-label="Eliminar escena">🗑</button>
-            </div>
-          </div>
-        </article>
-
-        <!-- Tarjeta de escena 5 -->
-        <article class="scene-card" role="listitem" tabindex="0" id="escena-5">
-          <div class="scene-card-header" style="--card-color:#d97706">
-            <span class="scene-icon">☀️</span>
-            <div class="scene-badges">
-              <span class="badge badge-private">Privada</span>
-              <span class="badge badge-views">👁 0</span>
-            </div>
-          </div>
-          <div class="scene-card-body">
-            <h3 class="scene-title">Sistema Solar Minimalista</h3>
-            <p class="scene-desc">Escena WIP con planetas representados como iconos SVG en órbitas elípticas simuladas.</p>
-            <div class="scene-meta">
-              <span class="meta-item">⚛ 9 elementos</span>
-              <span class="meta-item">↕ g: 0.2</span>
-              <span class="meta-item">🏓 rebote: 0.7</span>
-            </div>
-          </div>
-          <div class="scene-card-footer">
-            <div class="scene-color-strip" style="background:#d97706"></div>
-            <div class="scene-actions">
-              <button class="btn-card btn-edit" id="btn-edit-5">✏️ Editar</button>
-              <button class="btn-card btn-launch" id="btn-launch-5">🚀 Lanzar</button>
-              <button class="btn-card btn-delete" id="btn-delete-5" aria-label="Eliminar escena">🗑</button>
-            </div>
-          </div>
-        </article>
-
-        <!-- Tarjeta especial: añadir nueva -->
-        <article class="scene-card scene-card-add" role="listitem" tabindex="0" id="escena-add-card">
-          <a href="#nueva-escena" class="add-card-inner" id="add-card-link">
-            <div class="add-card-icon">+</div>
-            <p class="add-card-text">Crear nueva escena</p>
-          </a>
-        </article>
-
+        <!-- Cargando... -->
+        <p style="text-align:center; padding: 3rem; color: rgba(255,255,255,0.5)">Cargando biblioteca de escenas...</p>
       </div><!-- /scenes-grid -->
     </div><!-- /container -->
   </main>
@@ -310,7 +161,7 @@
 
         <form class="gl-form" id="form-nueva-escena" novalidate>
 
-          <!-- Fila 1: Nombre + Público -->
+          <!-- Nombre + Público -->
           <div class="form-row">
             <div class="form-group form-group-grow">
               <label for="f-nombre" class="form-label">Nombre de la escena <span class="req" aria-hidden="true">*</span></label>
@@ -331,7 +182,7 @@
             </div>
           </div>
 
-          <!-- Fila 2: Descripción -->
+          <!-- Descripción -->
           <div class="form-group">
             <label for="f-descripcion" class="form-label">Descripción</label>
             <textarea id="f-descripcion" name="descripcion" class="form-textarea"
@@ -340,7 +191,7 @@
             <span class="form-hint" id="f-desc-hint">Opcional · Máx. 1000 caracteres</span>
           </div>
 
-          <!-- Fila 3: Fondo -->
+          <!-- Fondo -->
           <div class="form-row">
             <div class="form-group">
               <label for="f-fondo-color" class="form-label">Color de fondo</label>
@@ -359,7 +210,7 @@
             </div>
           </div>
 
-          <!-- Fila 4: Gravedad -->
+          <!-- Gravedad -->
           <div class="form-row">
             <div class="form-group form-group-grow">
               <label for="f-gravedad-y" class="form-label">
@@ -389,8 +240,8 @@
             </div>
           </div>
 
-          <!-- Previsualización gravedad -->
-          <div class="gravity-preview" aria-label="Previsualización de dirección gravitacional" id="gravity-preview">
+          <!-- Previsualización -->
+          <div class="gravity-preview" id="gravity-preview">
             <div class="preview-label">Preview dirección de gravedad</div>
             <div class="preview-canvas">
               <div class="preview-grid"></div>
@@ -399,7 +250,7 @@
             </div>
           </div>
 
-          <!-- Acciones del formulario -->
+          <!-- Acciones -->
           <div class="form-actions">
             <button type="reset" class="btn-ghost" id="btn-reset-form">↺ Limpiar</button>
             <button type="submit" class="btn-primary btn-submit" id="btn-submit-form">
@@ -409,13 +260,12 @@
           </div>
         </form>
 
-        <!-- Mensaje de éxito -->
         <div class="success-message" id="success-msg" role="alert" aria-live="polite" hidden>
           <span class="success-icon">🎉</span>
           <p>¡Escena creada con éxito! Redirigiendo al editor…</p>
         </div>
-      </div><!-- /form-wrapper -->
-    </div><!-- /container -->
+      </div>
+    </div>
   </section>
 
   <!-- ===================== FOOTER ===================== -->
@@ -425,16 +275,16 @@
         <span class="nav-brand-text">Gravity<em>Lab</em></span>
         <p class="footer-tagline">Donde la física se vuelve arte.</p>
       </div>
-      <nav class="footer-links" aria-label="Pie de página">
-        <a href="#" id="footer-docs">Documentación</a>
-        <a href="#" id="footer-api">API</a>
-        <a href="#" id="footer-about">Acerca de</a>
-        <a href="#" id="footer-contact">Contacto</a>
+      <nav class="footer-links">
+        <a href="doc.html" target="_blank">Documentación</a>
+        <a href="api.html" target="_blank">API</a>
+        <a href="about.html" target="_blank">Acerca de</a>
+        <a href="contact.html" target="_blank">Contacto</a>
       </nav>
       <p class="footer-copy">&copy; 2026 GravityLab · Hecho con ⚡ y física.</p>
     </div>
   </footer>
 
-  <script src="js/app.js"></script>
+  <script src="js/app.js?v=3"></script>
 </body>
 </html>

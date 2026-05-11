@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Simulador - GravityLab</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+  <style>
+    /* Simulador specific styles */
+    body, html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background-color: var(--clr-bg);
+      font-family: 'Outfit', system-ui, sans-serif;
+    }
+    #ui-layer {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      padding: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      pointer-events: none;
+      z-index: 10;
+    }
+    #ui-layer > * {
+      pointer-events: auto;
+    }
+    #canvas-container {
+      width: 100vw;
+      height: 100vh;
+      position: absolute;
+      top: 0; left: 0;
+      z-index: 1;
+    }
+    .sim-btn {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border-radius: 999px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .sim-btn:hover {
+      background: rgba(255, 255, 255, 0.15);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+    .scene-info {
+      background: rgba(0, 0, 0, 0.4);
+      padding: 0.8rem 1.2rem;
+      border-radius: 12px;
+      color: rgba(255,255,255,0.7);
+      font-size: 0.9rem;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.05);
+      text-align: right;
+    }
+    .scene-info strong { color: white; display: block; font-size: 1.1rem; margin-bottom: 4px; }
+  </style>
+</head>
+<body>
+
+  <div id="ui-layer">
+    <div>
+      <a href="index.html" class="sim-btn">← Volver al panel</a>
+    </div>
+    <div class="scene-info" id="scene-meta">
+      Cargando física...
+    </div>
+  </div>
+
+  <div id="canvas-container"></div>
+
+  <script src="js/simulador.js?v=2"></script>
+</body>
+</html>
